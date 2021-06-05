@@ -1,6 +1,6 @@
 {
   "name": "fetchtml",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Write React/Vue like components with HTML, built off the power of fetch",
   "main": "index.js",
   "scripts": {
