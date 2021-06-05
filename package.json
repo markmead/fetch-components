@@ -1,7 +1,7 @@
 {
-  "name": "fetch-component",
+  "name": "fetchtml",
   "version": "1.0.0",
-  "description": "Write Vue/React like components with HTML",
+  "description": "Write React/Vue like components with HTML, built off the power of fetch",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-file index.js"
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/markmead/fetch-component.git"
+    "url": "https://github.com/markmead/fetchtml.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
