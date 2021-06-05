@@ -1,0 +1,26 @@
+{
+  "name": "fetch-component",
+  "version": "1.0.0",
+  "description": "Write Vue/React like components with HTML",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --out-file index.js"
+  },
+  "author": "Mark Mead",
+  "license": "MIT",
+  "keywords": [
+    "html components",
+    "components",
+    "fetch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markmead/fetch-component.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-preset-minify": "^0.5.1"
+  }
+}
