@@ -7,7 +7,7 @@ Write React/Vue like components with HTML, built off the power of `fetch`
 ### CDN
 
 ```
-https://unpkg.com/fetchtml@1.0.0/index.js
+https://unpkg.com/fetchtml@1.0.2/index.js
 ```
 
 ### NPM or Yarn
