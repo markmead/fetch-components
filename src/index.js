@@ -1,4 +1,4 @@
-export function render(type, url) {
+export default function (type, url) {
   const els = [...document.querySelectorAll(`[data-render=${type}]`)]
 
   for (const el of els) {
