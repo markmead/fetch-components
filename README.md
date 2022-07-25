@@ -1,78 +1,88 @@
-# Fetchtml
+# HTML Components
 
-Write React/Vue like components with HTML, built off the power of `fetch`
+Write simple, reusable HTML components in the style of React and Vue 🚀
 
-## Install
+### Using with a CDN
 
-### CDN
+```html
+<script
+  defer
+  src="https://unpkg.com/html-components@latest/dist/render.min.js"
+></script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderHtml('card', 'card.html')
+  })
+</script>
 ```
-https://unpkg.com/fetchtml@1.0.2/index.js
-```
 
-### NPM or Yarn
+### Using with a Package Manager
 
 ```shell
-npm i fetchtml
+yarn add -D html-components
 
-yarn add fetchtml
+npm install -D html-components
 ```
-
-Then import it with:
 
 ```js
-import 'fetchtml'
+import renderHtml from 'html-components'
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHtml('card', 'card.html')
+})
 ```
 
-## Usage
+## How it Works
 
-1. Create a HTML element with a `data-render=""` attribute
+**Create a HTML element with the `data-render` attribute.**
 
 ```html
-<div data-render="card"></div>
+<div data-render="card">
+</div>
 ```
 
-2. Add `data-<name>=""` attributes with the content you want to pass (props)
+_This is the name of the component and is required when rendering._
+
+**Add the props you want to pass to the component via `data-render-<prop>` attributes.**
 
 ```html
-<div data-render="card" data-title="Get Started" data-text="Join 1000+ happy customers" data-href="/join"></div>
+<div
+  data-render="card"
+  data-render-title="Get Started"
+  data-render-text="Join 1000+ happy customers"
+  data-render-href="/join"
+>
+</div>
 ```
 
-3. Create the component file at the root of your project
+**Add the component file to the root of your project.**
 
 ```
+- builds
 - src
-- utils
-...
-card.html
+- public
+  - card.html
 ```
 
-The "root" is often the `public` folder
+Typically, the `root` is the `public` folder.
 
-4. Write the HTML for the component with Vue/React like syntax for dynamic data (props)
+
+**Create the component HTML.**
 
 ```html
-<a class="p-8 border-2 border-blue-600 block" href="{{href}}">
-  <h5 class="text-blue-600 text-xl">{{title}}</h5>
-  <p class="text-gray-400">{{text}}</p>
+<a href="{{renderHref}}">
+  <h5>{{renderTitle}}</h5>
+  <p>{{renderText}}</p>
 </a>
 ```
 
-Notice the lack of spacing between the `{{}}`, that is required (for now)
+_Note the lack of spacing between `{{renderX}}`, that is required._
 
-5. Call the `render()` method with the name of the component and the file path
-
-```js
-render('card', 'card.html')
-```
-
-The `'card'` value comes from the `data-render=""` set on step 1
-
-I'd advise calling the `render()` once the window has loaded:
+**Render the HTML with the `renderHtml` method, passing in the component name and file.**
 
 ```js
-window.addEventListener('load', function () {
-  render('card', 'card.html')
-  render('banner', 'banner.html')
+document.addEventListener('DOMContentLoaded', () => {
+  renderHtml('card', 'card.html')
 })
 ```
