@@ -1,7 +1,7 @@
 {
-  "name": "html-components",
+  "name": "fetch-components",
   "version": "1.0.0",
-  "description": "Write simple, reusable HTML components in the style of React and Vue",
+  "description": "Write simple, reusable HTML components in the style of React and Vue powered native fetch 🎾",
   "keywords": [
     "HTML Components"
   ],
