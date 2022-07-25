@@ -1,7 +1,7 @@
 {
   "name": "html-components",
   "version": "1.0.0",
-  "description": "Write simple HTML components",
+  "description": "Write simple, reusable HTML components in the style of React and Vue",
   "keywords": [
     "HTML Components"
   ],
