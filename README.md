@@ -7,7 +7,7 @@ Write simple, reusable HTML components in the style of React and Vue 🚀
 ```html
 <script
   defer
-  src="https://unpkg.com/html-components@latest/dist/render.min.js"
+  src="https://unpkg.com/fetch-components@latest/dist/render.min.js"
 ></script>
 
 <script>
@@ -86,3 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHtml('card', 'card.html')
 })
 ```
+
+### Stats 📊
+
+![](https://img.shields.io/bundlephobia/min/fetch-components)
+![](https://img.shields.io/npm/v/fetch-components)
+![](https://img.shields.io/npm/dt/fetch-components)
+![](https://img.shields.io/github/license/markmead/fetch-components)
