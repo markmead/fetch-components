@@ -9,10 +9,12 @@ export default function (type, url) {
     })
       .then((res) => res.text())
       .then((html) => {
-        const keys = Object.keys(data)
+        const keys = Array.from(html.matchAll(/{{(.*?)}}/g)).map(
+          (match) => match[1]
+        )
 
         for (const key of keys) {
-          html = html.replace(`{{${key}}}`, data[key])
+          html = html.replace(`{{${key}}}`, data[key] || '')
         }
 
         el.innerHTML = html
