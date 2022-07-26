@@ -1,1 +1,1 @@
-function r(c,s){let d=[...document.querySelectorAll(`[data-render=${c}]`)];for(let t of d){let o=t.dataset;fetch(s,{method:"get"}).then(e=>e.text()).then(e=>{let a=Object.keys(o);for(let n of a)e=e.replace(`{{${n}}}`,o[n]);t.innerHTML=e})}}var u=r;export{u as default};
+function r(n,a){let c=[...document.querySelectorAll(`[data-render=${n}]`)];for(let o of c){let d=o.dataset;fetch(a,{method:"get"}).then(e=>e.text()).then(e=>{let f=Array.from(e.matchAll(/{{(.*?)}}/g)).map(t=>t[1]);for(let t of f)e=e.replace(`{{${t}}}`,d[t]||"");o.innerHTML=e})}}var m=r;export{m as default};
