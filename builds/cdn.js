@@ -1,3 +1,4 @@
-import renderHtml from '../src/index.js'
+import { renderHtml, waitForRender } from '../src/index.js'
 
 window.renderHtml = renderHtml
+window.waitForRender = waitForRender

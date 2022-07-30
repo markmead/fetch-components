@@ -1,3 +1,3 @@
-import renderHtml from '../src/index.js'
+import { renderHtml, waitForRender } from '../src/index.js'
 
-export default renderHtml
+export default { renderHtml, waitForRender }

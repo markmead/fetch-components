@@ -85,6 +85,46 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 ```
 
+### Nested Components
+
+If you have nested components then you'll want to use the `waitForRender` function that comes with the package.
+
+#### Using with a CDN
+
+```html
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderHtml('parent', '/components/parent.html')
+
+    waitForRender('parent').then(() => {
+      renderHtml('child', '/components/child.html')
+
+      waitForRender('child').then(() =>
+        renderHtml('subchild', '/components/subchild.html')
+      )
+    })
+  })
+</script>
+```
+
+#### Using with a Package Manager
+
+```js
+import { renderHtml, waitForRender } from 'fetch-components'
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHtml('parent', '/components/parent.html')
+
+  waitForRender('parent').then(() => {
+    renderHtml('child', '/components/child.html')
+
+    waitForRender('child').then(() =>
+      renderHtml('subchild', '/components/subchild.html')
+    )
+  })
+})
+```
+
 ### Stats 📊
 
 ![](https://img.shields.io/bundlephobia/min/fetch-components)
