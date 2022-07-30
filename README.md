@@ -12,7 +12,7 @@ Write simple, reusable HTML components in the style of React and Vue 🚀
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    renderHtml('card', 'card.html')
+    renderHtml.renderComponent('card', '/components/card.html')
   })
 </script>
 ```
@@ -29,7 +29,7 @@ npm install -D fetch-components
 import renderHtml from 'fetch-components'
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderHtml('card', 'card.html')
+  renderHtml.renderComponent('card', '/components/card.html')
 })
 ```
 
@@ -60,11 +60,9 @@ _This is the name of the component and is required when rendering._
 ```
 - builds
 - src
-- public
+- components
   - card.html
 ```
-
-Typically, the `root` is the `public` folder.
 
 **Create the component HTML.**
 
@@ -77,31 +75,33 @@ Typically, the `root` is the `public` folder.
 
 _Note the lack of spacing between `{{renderX}}`, that is required._
 
-**Render the HTML with the `renderHtml` method, passing in the component name and file.**
+**Render the HTML with the `renderComponent` method, passing in the component name and file.**
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
-  renderHtml('card', 'card.html')
+  renderHtml.renderComponent('card', '/components/card.html')
 })
 ```
 
 ### Nested Components
 
-If you have nested components then you'll want to use the `waitForRender` function that comes with the package.
+If you have nested components then you'll want to use the `waitFor` function that comes with the package.
 
 #### Using with a CDN
 
 ```html
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    renderHtml('parent', '/components/parent.html')
+    renderHtml.renderComponent('parent', '/components/parent.html')
 
-    waitForRender('parent').then(() => {
-      renderHtml('child', '/components/child.html')
+    renderHtml.waitFor('parent').then(() => {
+      renderHtml.renderComponent('child', '/components/child.html')
 
-      waitForRender('child').then(() =>
-        renderHtml('subchild', '/components/subchild.html')
-      )
+      renderHtml
+        .waitFor('child')
+        .then(() =>
+          renderHtml.renderComponent('subchild', '/components/subchild.html')
+        )
     })
   })
 </script>
@@ -110,17 +110,19 @@ If you have nested components then you'll want to use the `waitForRender` functi
 #### Using with a Package Manager
 
 ```js
-import { renderHtml, waitForRender } from 'fetch-components'
+import renderHtml from 'fetch-components'
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderHtml('parent', '/components/parent.html')
+  renderHtml.renderComponent('parent', '/components/parent.html')
 
-  waitForRender('parent').then(() => {
-    renderHtml('child', '/components/child.html')
+  renderHtml.waitFor('parent').then(() => {
+    renderHtml.renderComponent('child', '/components/child.html')
 
-    waitForRender('child').then(() =>
-      renderHtml('subchild', '/components/subchild.html')
-    )
+    renderHtml
+      .waitFor('child')
+      .then(() =>
+        renderHtml.renderComponent('subchild', '/components/subchild.html')
+      )
   })
 })
 ```

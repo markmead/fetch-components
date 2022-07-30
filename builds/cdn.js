@@ -1,4 +1,6 @@
-import { renderHtml, waitForRender } from '../src/index.js'
+import { renderComponent, waitFor } from '../src/index.js'
 
-window.renderHtml = renderHtml
-window.waitForRender = waitForRender
+window.renderHtml = {
+  renderComponent,
+  waitFor,
+}

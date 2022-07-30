@@ -1,4 +1,4 @@
-export function renderHtml(type, url) {
+export function renderComponent(type, url) {
   const els = [...document.querySelectorAll(`[data-render=${type}]`)]
 
   for (const el of els) {
@@ -22,7 +22,7 @@ export function renderHtml(type, url) {
   }
 }
 
-export function waitForRender(renderTarget) {
+export function waitFor(renderTarget) {
   return new Promise((resolve) => {
     let renderEl = document.querySelector(`[data-render="${renderTarget}"]`)
 
