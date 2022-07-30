@@ -20,13 +20,13 @@ Write simple, reusable HTML components in the style of React and Vue 🚀
 ### Using with a Package Manager
 
 ```shell
-yarn add -D html-components
+yarn add -D fetch-components
 
-npm install -D html-components
+npm install -D fetch-components
 ```
 
 ```js
-import renderHtml from 'html-components'
+import renderHtml from 'fetch-components'
 
 document.addEventListener('DOMContentLoaded', () => {
   renderHtml('card', 'card.html')
@@ -38,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 **Create a HTML element with the `data-render` attribute.**
 
 ```html
-<div data-render="card">
-</div>
+<div data-render="card"> </div>
 ```
 
 _This is the name of the component and is required when rendering._
@@ -66,7 +65,6 @@ _This is the name of the component and is required when rendering._
 ```
 
 Typically, the `root` is the `public` folder.
-
 
 **Create the component HTML.**
 
