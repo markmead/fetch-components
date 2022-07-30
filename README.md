@@ -12,7 +12,7 @@ Write simple, reusable HTML components in the style of React and Vue 🚀
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    renderHtml('card', 'card.html')
+    renderHtml.renderComponent('card', '/components/card.html')
   })
 </script>
 ```
@@ -20,16 +20,16 @@ Write simple, reusable HTML components in the style of React and Vue 🚀
 ### Using with a Package Manager
 
 ```shell
-yarn add -D html-components
+yarn add -D fetch-components
 
-npm install -D html-components
+npm install -D fetch-components
 ```
 
 ```js
-import renderHtml from 'html-components'
+import renderHtml from 'fetch-components'
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderHtml('card', 'card.html')
+  renderHtml.renderComponent('card', '/components/card.html')
 })
 ```
 
@@ -38,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 **Create a HTML element with the `data-render` attribute.**
 
 ```html
-<div data-render="card">
-</div>
+<div data-render="card"> </div>
 ```
 
 _This is the name of the component and is required when rendering._
@@ -61,12 +60,9 @@ _This is the name of the component and is required when rendering._
 ```
 - builds
 - src
-- public
+- components
   - card.html
 ```
-
-Typically, the `root` is the `public` folder.
-
 
 **Create the component HTML.**
 
@@ -79,11 +75,55 @@ Typically, the `root` is the `public` folder.
 
 _Note the lack of spacing between `{{renderX}}`, that is required._
 
-**Render the HTML with the `renderHtml` method, passing in the component name and file.**
+**Render the HTML with the `renderComponent` method, passing in the component name and file.**
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
-  renderHtml('card', 'card.html')
+  renderHtml.renderComponent('card', '/components/card.html')
+})
+```
+
+### Nested Components
+
+If you have nested components then you'll want to use the `waitFor` function that comes with the package.
+
+#### Using with a CDN
+
+```html
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderHtml.renderComponent('parent', '/components/parent.html')
+
+    renderHtml.waitFor('parent').then(() => {
+      renderHtml.renderComponent('child', '/components/child.html')
+
+      renderHtml
+        .waitFor('child')
+        .then(() =>
+          renderHtml.renderComponent('subchild', '/components/subchild.html')
+        )
+    })
+  })
+</script>
+```
+
+#### Using with a Package Manager
+
+```js
+import renderHtml from 'fetch-components'
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHtml.renderComponent('parent', '/components/parent.html')
+
+  renderHtml.waitFor('parent').then(() => {
+    renderHtml.renderComponent('child', '/components/child.html')
+
+    renderHtml
+      .waitFor('child')
+      .then(() =>
+        renderHtml.renderComponent('subchild', '/components/subchild.html')
+      )
+  })
 })
 ```
 

@@ -1,4 +1,4 @@
-export default function (type, url) {
+export function renderComponent(type, url) {
   const els = [...document.querySelectorAll(`[data-render=${type}]`)]
 
   for (const el of els) {
@@ -20,4 +20,27 @@ export default function (type, url) {
         el.innerHTML = html
       })
   }
+}
+
+export function waitFor(renderTarget) {
+  return new Promise((resolve) => {
+    let renderEl = document.querySelector(`[data-render="${renderTarget}"]`)
+
+    if (renderEl.innerHTML) {
+      return resolve(renderEl)
+    }
+
+    const observer = new MutationObserver(() => {
+      if (renderEl.innerHTML) {
+        resolve(renderEl)
+
+        observer.disconnect()
+      }
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })
+  })
 }
