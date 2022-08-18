@@ -1,9 +1,10 @@
 {
   "name": "fetch-components",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Write simple, reusable HTML components in the style of React and Vue powered native fetch 🎾",
   "keywords": [
-    "HTML Components"
+    "HTML Components",
+    "JavaScript Components"
   ],
   "author": "Mark Mead",
   "license": "MIT",
