@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 _This is the name of the component and is required when rendering._
 
-**Add the props you want to pass to the component via `data-render-<prop>` attributes.**
+**Add the props you want to pass to the component via `data-render-<prop>`
+attributes.**
 
 ```html
 <div
@@ -75,7 +76,8 @@ _This is the name of the component and is required when rendering._
 
 _Note the lack of spacing between `{{renderX}}`, that is required._
 
-**Render the HTML with the `renderComponent` method, passing in the component name and file.**
+**Render the HTML with the `renderComponent` method, passing in the component
+name and file.**
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -85,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ### Nested Components
 
-If you have nested components then you'll want to use the `waitFor` function that comes with the package.
+If you have nested components then you'll want to use the `waitFor` function
+that comes with the package.
 
 #### Using with a CDN
 

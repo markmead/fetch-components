@@ -1,44 +1,52 @@
-export function renderComponent(type, url) {
-  const els = [...document.querySelectorAll(`[data-render=${type}]`)]
+export function renderComponent(componentType, componentUrl) {
+  const componentsToRender = [
+    ...document.querySelectorAll(`[data-render=${componentType}]`),
+  ]
 
-  for (const el of els) {
-    const data = el.dataset
+  for (const componentToRender of componentsToRender) {
+    const componentData = componentToRender.dataset
 
-    fetch(url, {
+    fetch(componentUrl, {
       method: 'get',
     })
-      .then((res) => res.text())
-      .then((html) => {
-        const keys = Array.from(html.matchAll(/{{(.*?)}}/g)).map(
+      .then((fetchResponse) => fetchResponse.text())
+      .then((responseHtml) => {
+        const dataKeys = Array.from(responseHtml.matchAll(/{{(.*?)}}/g)).map(
           (match) => match[1]
         )
+        let newHtml
 
-        for (const key of keys) {
-          html = html.replace(`{{${key}}}`, data[key] || '')
+        for (const dataKey of dataKeys) {
+          newHtml = responseHtml.replace(
+            `{{${dataKey}}}`,
+            componentData[dataKey] || ''
+          )
         }
 
-        el.innerHTML = html
+        componentToRender.innerHTML = newHtml
       })
   }
 }
 
 export function waitFor(renderTarget) {
   return new Promise((resolve) => {
-    let renderEl = document.querySelector(`[data-render="${renderTarget}"]`)
+    const renderedComponent = document.querySelector(
+      `[data-render="${renderTarget}"]`
+    )
 
-    if (renderEl.innerHTML) {
-      return resolve(renderEl)
+    if (renderedComponent.innerHTML) {
+      return resolve(renderedComponent)
     }
 
-    const observer = new MutationObserver(() => {
-      if (renderEl.innerHTML) {
-        resolve(renderEl)
+    const renderObserver = new MutationObserver(() => {
+      if (renderedComponent.innerHTML) {
+        resolve(renderedComponent)
 
-        observer.disconnect()
+        renderObserver.disconnect()
       }
     })
 
-    observer.observe(document.body, {
+    renderObserver.observe(document.body, {
       childList: true,
       subtree: true,
     })
